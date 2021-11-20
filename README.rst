@@ -172,7 +172,7 @@ To run the tests, this command:
 
 ::
 
-    $ git clone http://github.com/arc90/git-sweep.git
+    $ git clone https://github.com/talhajunaidd/git-sweep3
     $ cd git-sweep
     $ poetry install
     ...
