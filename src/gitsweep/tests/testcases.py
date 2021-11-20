@@ -6,7 +6,7 @@ from unittest import TestCase
 from uuid import uuid4 as uuid
 from shutil import rmtree
 from shlex import split
-from contextlib import contextmanager, nested
+from contextlib import contextmanager, ExitStack
 from textwrap import dedent
 
 from mock import patch
@@ -249,15 +249,19 @@ class CommandTestCase(GitSweepTestCase, InspectorTestCase, DeleterTestCase):
             patch.object(sys, 'stdout'),
             patch.object(sys, 'stderr'))
 
-        with nested(*patches):
+        with ExitStack() as stack:
+            for patch_ in patches:
+                stack.enter_context(patch_)
             stdout = sys.stdout
             stderr = sys.stderr
+            exit_code = None
             try:
                 self.cli.run()
             except SystemExit as se:
+                exit_code = se.code
                 pass
 
         stdout = ''.join([i[0][0] for i in stdout.write.call_args_list])
         stderr = ''.join([i[0][0] for i in stderr.write.call_args_list])
 
-        return (se.code, stdout, stderr)
+        return exit_code, stdout, stderr
