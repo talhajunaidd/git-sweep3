@@ -1,4 +1,4 @@
-git-sweep
+git-sweep3
 =========
 
 A command-line tool that helps you clean up Git branches that have been merged
@@ -22,14 +22,14 @@ now?
 The answer
 ----------
 
-Using ``git-sweep`` you can **safely remove remote branches that have been
+Using ``git-sweep3`` you can **safely remove remote branches that have been
 merged into master**.
 
 To install it run:
 
 ::
 
-    pip install git-sweep || easy_install git-sweep
+    pip install git-sweep3
 
 Try it for yourself (safely)
 ----------------------------
@@ -168,29 +168,22 @@ git-sweep uses `git-flow`_ for development and release cylces. If you want to
 hack on this with us, fork the project and put a pull request into the
 ``develop`` branch when you get done.
 
-To run the tests, bootstrap Buildout and run this command:
+To run the tests, this command:
 
 ::
 
     $ git clone http://github.com/arc90/git-sweep.git
     $ cd git-sweep
-    $ python2.7 bootstrap.py
+    $ poetry install
     ...
-    $ ./bin/buildout
-    ...
-    $ ./bin/test
+    $ poetry run tox
 
-We also use Tox_. It will run the tests for Python 2.6 and 2.7.
-
-::
-
-    $ ./bin/tox
 
 Requirements
 ------------
 
 * Git >= 1.7
-* Python >= 2.6
+* Python >= 3.7 < 3.10.0
 
 License
 -------
