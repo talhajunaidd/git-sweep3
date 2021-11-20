@@ -1,5 +1,5 @@
 git-sweep3
-=========
+==========
 
 A command-line tool that helps you clean up Git branches that have been merged
 into master.
@@ -147,10 +147,10 @@ immediately.
 
     Tell everyone to run `git fetch --prune` to sync with this remote.
     (you don't have to, yours is synced)
-    
-    
+
+
 Deleting local branches
------------
+-----------------------
 
 You can also clean up local branches by using simple hack:
 
